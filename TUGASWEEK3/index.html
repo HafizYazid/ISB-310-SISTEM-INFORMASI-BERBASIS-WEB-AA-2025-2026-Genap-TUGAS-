@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUGAS WEEK 3 - Persistent Counter</title>
+</head>
+<body>
+    <button onclick="counterClick()">Click Me!</button>
+    <p>You have clicked the button <span id="clickCount">0</span> times in this session.</p>
+    <p>Click the button to see the counter increase.</p>
+    <p>Close the browser tab (or window), and try again, and the counter is reset.</p>
+
+    <script>
+        let savedCount = localStorage.getItem("clickCount");
+        let count = savedCount ? parseInt(savedCount) : 0;
+
+        document.getElementById("clickCount").textContent = count;
+
+        function counterClick() {
+            count++;
+            localStorage.setItem("clickCount", count);
+            document.getElementById("clickCount").textContent = count;
+        }
+    </script>
+</body>
+</html>
