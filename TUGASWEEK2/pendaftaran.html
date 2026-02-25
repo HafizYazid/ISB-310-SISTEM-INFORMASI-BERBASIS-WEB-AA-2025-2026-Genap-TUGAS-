@@ -1,0 +1,87 @@
+<!-- "saya mengerjakan tugas ini sendiri tanpa melakukan kecurangan seperti menggunakan, 
+ mendupliaksi kode perogram kode program yang ada. jia saya melakukan kecurangan dalam perngerjaan
+  tugas ini maka saya siap menerima sanksi atau hukuman dari dari dosen mata kuliah dan tuhan / allah  swt"
+ -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Mahasiswa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="outer-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <h1>Pendaftaran Mahasiswa :)</h1>
+        </header>
+
+        <!-- Main Container -->
+        <div class="main-form-container">
+            <div class="form-wrapper">
+                <h2 class="form-title">Formulir Pendaftaran Mahasiswa</h2>
+
+                <form class="registration-form">
+                    <!-- Nama Lengkap Row -->
+                    <div class="form-row">
+                        <label class="form-label">Nama Lengkap</label>
+                        <input type="text" placeholder="Nama Lengkap" class="form-input">
+                    </div>
+
+                    <!-- NIM Row -->
+                    <div class="form-row">
+                        <label class="form-label">NIM</label>
+                        <input type="text" placeholder="Nomor Induk Mahasiswa" class="form-input">
+                    </div>
+
+                    <!-- Email Row -->
+                    <div class="form-row">
+                        <label class="form-label">Email</label>
+                        <input type="email" placeholder="Email Universitas" class="form-input">
+                    </div>
+
+                    <!-- Program Studi Row -->
+                    <div class="form-row">
+                        <label class="form-label">Program Studi</label>
+                        <select class="form-input">
+                            <option value="">-- Pilih Program Studi --</option>
+                            <option value="ti">Teknik Informatika</option>
+                            <option value="si">Sistem Informasi</option>
+                            <option value="mi">Manajemen Informatika</option>
+                            <option value="tk">Teknik Komputer</option>
+                        </select>
+                    </div>
+
+                    <!-- Password Row -->
+                    <div class="form-row">
+                        <label class="form-label">Password</label>
+                        <input type="password" placeholder="Password" class="form-input">
+                    </div>
+
+                    <!-- Remember Me Checkbox -->
+                    <div class="form-row checkbox-row">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="remember" class="form-checkbox">
+                            <label for="remember" class="checkbox-label">Setuju Syarat & Ketentuan</label>
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="form-row button-row">
+                        <button type="submit" class="btn btn-submit">Daftar</button>
+                    </div>
+
+                    <!-- Back Button -->
+                    <div class="form-row back-button-row">
+                        <a href="index.html" class="btn btn-back">← Kembali</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer"></footer>
+    </div>
+</body>
+</html>
