@@ -9,7 +9,7 @@
 ---
 
 ## 📘 Mata Kuliah: ISB-310 SISTEM INFORMASI BERBASIS WEB AA 2025/2026 Genap
-Halaman ini berisi kumpulan tugas mingguan yang dikerjakan selama satu semester. Setiap tugas disimpan dalam folder terpisah pada branch khusus untuk memudahkan navigasi.
+Halaman ini berisi kumpulan tugas mingguan yang dikerjakan selama satu semester. Setiap tugas disimpan dalam folder terpisah didalam satu branch khusus untuk memudahkan navigasi.
 
 ### 📁 Daftar Tugas Mingguan
 Klik pada nama tugas untuk langsung menuju folder di branch yang bersangkutan.
