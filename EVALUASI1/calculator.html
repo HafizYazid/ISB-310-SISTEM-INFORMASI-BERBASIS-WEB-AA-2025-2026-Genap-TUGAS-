@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator - Sistem Sederhana</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <div class="header-images">
+            <img src="asset/itenas_cover.jpeg" alt="Header 1">
+            <img src="asset/itenas_cover.jpeg" alt="Header 2">
+            <img src="asset/itenas_cover.jpeg" alt="Header 3">
+            <img src="asset/itenas_cover.jpeg" alt="Header 4">
+            <img src="asset/itenas_cover.jpeg" alt="Header 5">
+            <img src="asset/itenas_cover.jpeg" alt="Header 6">
+        </div>
+
+        <div class="content-wrapper">
+            <div class="sidebar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="calculator.html">Calculator</a></li>
+                </ul>
+            </div>
+
+            <div class="main-content">
+                <div class="calc-container">
+                    <input type="number" id="num1" style="width: 80px;">
+                    <select id="operator">
+                        <option value="*">*</option>
+                        <option value="/">/</option>
+                        <option value="+">+</option>
+                        <option value="-">-</option>
+                        <option value="%">%</option>
+                        <option value="^">^</option>
+                    </select>
+                    <input type="number" id="num2" style="width: 80px;">
+                    <span>=</span>
+                    <input type="text" id="hasil" readonly style="width: 100px;">
+                </div>
+                
+                <div>
+                    <button class="btn-black" onclick="hitungKalkulator()">Hitung</button>
+                    <button class="btn-black" onclick="resetKalkulator()">Reset</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            280224<br>
+            Sistem Informasi | ITENAS 2024
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            alert("inputan pertama dan kedua harus lebih dari 0");
+        };
+
+        function hitungKalkulator() {
+            let num1Val = document.getElementById('num1').value;
+            let num2Val = document.getElementById('num2').value;
+
+            if (num1Val === "" || num2Val === "" || parseFloat(num1Val) <= 0 || parseFloat(num2Val) <= 0) {
+                alert("inputan pertama dan kedua harus lebih dari 0");
+                return;
+            }
+
+            let num1 = parseFloat(num1Val);
+            let num2 = parseFloat(num2Val);
+            let operator = document.getElementById('operator').value;
+            let hasil = 0;
+
+            switch(operator) {
+                case '*': hasil = num1 * num2; break;
+                case '/': hasil = num1 / num2; break;
+                case '+': hasil = num1 + num2; break;
+                case '-': hasil = num1 - num2; break;
+                case '%': hasil = num1 % num2; break;
+                case '^': hasil = Math.pow(num1, num2); break;
+            }
+
+            document.getElementById('hasil').value = hasil;
+        }
+
+        function resetKalkulator() {
+            document.getElementById('num1').value = "";
+            document.getElementById('num2').value = "";
+            document.getElementById('operator').selectedIndex = 0;
+            document.getElementById('hasil').value = "";
+        }
+    </script>
+</body>
+</html>
