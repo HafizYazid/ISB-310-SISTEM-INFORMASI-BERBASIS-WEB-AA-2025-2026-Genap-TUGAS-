@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Garis Hidup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <div class="header-images">
+            <img src="asset/itenas_cover.jpeg" alt="Header 1">
+            <img src="asset/itenas_cover.jpeg" alt="Header 2">
+            <img src="asset/itenas_cover.jpeg" alt="Header 3">
+            <img src="asset/itenas_cover.jpeg" alt="Header 4">
+            <img src="asset/itenas_cover.jpeg" alt="Header 5">
+            <img src="asset/itenas_cover.jpeg" alt="Header 6">
+        </div>
+
+        <div class="content-wrapper">
+            <div class="sidebar">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Menu</a></li>
+                    <li><a href="#">Calculator</a></li>
+                    <li><a href="#">Garis Hidup</a></li>
+                </ul>
+            </div>
+
+            <div class="main-content">
+                <h2>Program Garis Hidup Tanggal Lahir</h2>
+                <p>Program ini merupakan program untuk mendeskripsikan karakter anda berdasarkan tanggal lahir yang kemudian hasilnya akan dikategorikan sebagai Garis Lahir 1 sampai 9.</p>
+                <p>Angka-angka dalam tanggal lahir Anda menyimpan banyak makna. Jumlahkan sampai menjadi satu angka, lalu lihat artinya? (misalnya Anda lahir tanggal 25 desember 1998, 25 + 12 + 1998 = 2 + 5 + 1 + 2 + 1 + 9 + 8 + 8 = 36 = 3 + 6 = 9)</p>
+                
+                <h3>Ayo Cari Tahu Kepribadian Kamu !</h3>
+                <hr>
+
+                <table class="form-table">
+                    <tr>
+                        <td width="250" align="center">Masukkan Tanggal Lahir Anda</td>
+                        <td width="20">:</td>
+                        <td><select id="tanggal"></select></td>
+                    </tr>
+                    <tr>
+                        <td align="center">Masukkan Bulan Lahir Anda</td>
+                        <td>:</td>
+                        <td>
+                            <select id="bulan">
+                                <option value="1">Januari</option>
+                                <option value="2">Februari</option>
+                                <option value="3">Maret</option>
+                                <option value="4">April</option>
+                                <option value="5">Mei</option>
+                                <option value="6">Juni</option>
+                                <option value="7">Juli</option>
+                                <option value="8">Agustus</option>
+                                <option value="9">September</option>
+                                <option value="10">Oktober</option>
+                                <option value="11">November</option>
+                                <option value="12">Desember</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">Masukkan Tahun Lahir Anda</td>
+                        <td>:</td>
+                        <td><select id="tahun"></select></td>
+                    </tr>
+                </table>
+
+                <div class="buttons">
+                    <button onclick="hitungGarisHidup()">kirim</button>
+                    <button onclick="resetForm()">reset</button>
+                </div>
+
+                <hr>
+
+                <h3>Output</h3>
+                <table class="output-table">
+                    <tr>
+                        <td width="200" align="center">Tanggal</td>
+                        <td width="20">=</td>
+                        <td><input type="text" id="out-tanggal" readonly></td>
+                    </tr>
+                    <tr>
+                        <td align="center">Bulan</td>
+                        <td>=</td>
+                        <td><input type="text" id="out-bulan" readonly></td>
+                    </tr>
+                    <tr>
+                        <td align="center">Tahun</td>
+                        <td>=</td>
+                        <td><input type="text" id="out-tahun" readonly></td>
+                    </tr>
+                    <tr>
+                        <td align="center">Hasil 1</td>
+                        <td>=</td>
+                        <td><input type="text" id="out-hasil1" readonly></td>
+                    </tr>
+                    <tr>
+                        <td align="center">Hasil 2</td>
+                        <td>=</td>
+                        <td><input type="text" id="out-hasil2" readonly></td>
+                    </tr>
+                    <tr>
+                        <td align="center">Hasil Akhir</td>
+                        <td>=</td>
+                        <td><input type="text" id="out-hasilAkhir" readonly></td>
+                    </tr>
+                </table>
+
+                <div id="hasil-deskripsi-container">
+                    <h4 id="judul-hasil"></h4>
+                    <p id="teks-hasil"></p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer">
+            280224<br>
+            Sistem Informasi | ITENAS 2024
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const selectTanggal = document.getElementById('tanggal');
+            for(let i = 1; i <= 31; i++) {
+                let option = document.createElement('option');
+                option.value = i;
+                option.text = i;
+                selectTanggal.appendChild(option);
+            }
+
+            const selectTahun = document.getElementById('tahun');
+            for(let i = 1950; i <= 2024; i++) {
+                let option = document.createElement('option');
+                option.value = i;
+                option.text = i;
+                selectTahun.appendChild(option);
+            }
+        };
+
+        function hitungGarisHidup() {
+            const tgl = document.getElementById('tanggal').value;
+            const bln = document.getElementById('bulan').value;
+            const thn = document.getElementById('tahun').value;
+
+            document.getElementById('out-tanggal').value = tgl;
+            document.getElementById('out-bulan').value = bln;
+            document.getElementById('out-tahun').value = thn;
+
+            let digitsStr = tgl.toString() + bln.toString() + thn.toString();
+            
+            let steps = [];
+            let currentStr = digitsStr;
+
+            while (currentStr.length > 1) {
+                let tempSum = 0;
+                for (let i = 0; i < currentStr.length; i++) {
+                    tempSum += parseInt(currentStr[i]);
+                }
+                steps.push(tempSum);
+                currentStr = tempSum.toString();
+            }
+
+            // PERBAIKAN LOGIKA PENEMPATAN HASIL ADA DI SINI
+            let hasil1 = "";
+            let hasil2 = "";
+            let hasilAkhir = "";
+
+            if (steps.length > 0) {
+                hasil1 = steps[0]; // Penjumlahan pertama selalu masuk Hasil 1
+                hasilAkhir = steps[steps.length - 1]; // Hasil Akhir selalu elemen terakhir dari array
+            }
+            if (steps.length > 1) {
+                hasil2 = steps[1]; // Penjumlahan kedua (jika ada) selalu masuk Hasil 2
+            }
+
+            document.getElementById('out-hasil1').value = hasil1;
+            document.getElementById('out-hasil2').value = hasil2;
+            document.getElementById('out-hasilAkhir').value = hasilAkhir;
+
+            document.getElementById('judul-hasil').innerText = "Tanggal Lahir Anda Berada Pada Garis Hidup " + hasilAkhir;
+            
+            let deskripsi = "";
+            switch(parseInt(hasilAkhir)) {
+                case 1:
+                    deskripsi = "Garis hidup 1 menunjukkan Anda adalah seorang pemimpin alami. Anda memiliki jiwa kemandirian yang kuat, inovatif, dan penuh semangat untuk memulai hal-hal baru. Orang dengan garis hidup ini cenderung ambisius dan memiliki tekad yang kuat untuk mencapai tujuan mereka. Kepercayaan diri adalah kunci kesuksesan Anda.";
+                    break;
+                case 2:
+                    deskripsi = "Garis hidup 2 menunjukkan Anda sangat diplomatis, pendamai, dan memiliki empati yang tinggi. Anda adalah pemain tim yang hebat dan sangat peka terhadap perasaan orang lain. Harmoni dan keseimbangan adalah kunci dalam hidup Anda. Kemampuan Anda menengahi konflik membuat Anda sangat dihargai lingkungan sekitar.";
+                    break;
+                case 3:
+                    deskripsi = 
+                    "Bagi mereka yang jumlah angka hari lahirnya 3, ekspresi, sosialisasi, dan kreativitas sebagai " +
+                    "pelaiaran vana harus ditempuh dalam hiduonva. Entertainer kelas dunia. orangorana vana " +
+                    "berkilau dan optimistik termasuk di dalamnya. Orang-orang dengan garis hidup 3 yang telah " +
+                    "mengasah bakatnya mempunyai bakat kreatif yang istimewa, biasanya dalam verbal, tulisan, " +
+                    "Arina atan cemacamnus ag vane hare dcananus daam nrun adaan agtisecan dalar " +
+                    "berekspresi. Sisi cerah bagi orang-orang ini bertema harmoni, keindahan dan kesenangan, " +
+                    "serta membagi kemampuan kreatif Anda dengan dunia. Mengasah kemampuan Anda dalam " +
+                    "ekspresi kreatif adalah misi tertinggi bagi anaka caris hidup ini. Karakter mereka hangat dan " +
+                    "bersahabat, pembicara yang baik, sosial dan terbuka. " +
+                    "Pembicara yang trampil dalam arti bukan hanya seseorang yang menyenangkan untuk " +   
+                    "didengar, tapi lebih penting lagi, seseorang yang mampu untuk mendengarkan. Mereka " +
+                    "adalah individi individi vano celalt ditenma dangan baik dalam cetian ctuaci cocial, dar " +
+                    "juga mengerti bagaimana membuat orang lain merasa diterima. Potensi imajinasi kreatir " +
+                    "selalu ada, walaupun bisa berupa hal yang laten, karena mereka tidak selalu tergerak untuk " +
+                    "mengembanakan potensi ini. Sikapnya melihat kehidupan hampir selalu positif, dan " +
+                    "pembawaannya riang dan terbuka. Anda bisa menghadapi banyak halangan dalam hidup " +
+                    "dennan eleltit dan lanacuna kembali bercemandat anda memniinvai tata krama vand haik " +
+                    "dan tampaknya cukup peka akan perasaan dan emosi orang lain. Hidup dijalani sepenuhnya, " +
+                    "seringkali tanpa kekhawatiran akan hari esok. " +
+                    "Anda tidak terlalu pandai menangani perihal keuangan karena tidak menganggap penting hal " +
+                    "itu. Uang akan dibelanjakan saat Anda punya, dan tidak dikeluarkan saat Anda tidak ada " +
+                    "uang. Sisi negatifnya, sikap mereka dalam hidup bisa sangat ringan sampai membuatnya jadi " +
+                    "superfisial. Kemampuan Anda seringkali tersebar dan jadi kehilangan fokus. Mereka dengan " +
+                    "anoka narc hidln 3 ini adalah teka-teki dananda cerinckali hernanh mooa dan cenderunal " +
+                    "menghindar. Sulit bagi Anda untuk menetap di satu tempat. Jaga agar tidak selalu mengkritik " +
+                    "orang, tidak sabaran, ataupun terlalu optimistik. Garis hidup 3 ini memberikan kemampuan di " +
+                    "atas rata-rata dalam seni. Baik melukis, disain interior lansekao. menulis. musik. teater " +
+                    "ataupun mampu seluruhnya. Anda selalu gembira, penuh inspirasi, dan selalu mencari " +
+                    "stimulasi dari orand-orana vana sealiran. Sifat Anda vana ramai it mendukuna Anda untuk " +
+                    "bisa melesat, apalagi jika Anda mampu memfokuskan energi dan talenta Anda pada minat " +
+                    "yang tepat.";
+                    break;
+                case 4:
+                    deskripsi = "Garis hidup 4 mewakili ketertiban, stabilitas, dan kerja keras. Anda adalah perencana yang baik, logis, praktis, dan sangat dapat diandalkan. Orang-orang melihat Anda sebagai pondasi yang kuat karena dedikasi dan kedisiplinan Anda. Keberhasilan Anda dibangun di atas usaha yang gigih.";
+                    break;
+                case 5:
+                    deskripsi = "Garis hidup 5 menyukai kebebasan, petualangan, dan pengalaman baru. Anda sangat dinamis, mudah beradaptasi dengan perubahan, dan tidak suka terkekang rutinitas. Anda memiliki rasa ingin tahu yang besar terhadap dunia dan sangat mudah bergaul di berbagai lingkungan.";
+                    break;
+                case 6:
+                    deskripsi = "Garis hidup 6 menunjukkan sosok yang penuh tanggung jawab, penyayang, dan sangat peduli. Anda sering kali menjadi pelindung bagi keluarga maupun komunitas. Sifat empati dan dorongan untuk merawat orang lain adalah kekuatan terbesar Anda dalam membina hubungan jangka panjang.";
+                    break;
+                case 7:
+                    deskripsi = "Garis hidup 7 adalah pencari kebenaran sejati. Anda sangat analitis, intuitif, dan memiliki pemikiran mendalam. Anda sering butuh waktu sendiri untuk merenung dan mengisi ulang energi. Pengetahuan, kebijaksanaan, dan hal-hal filosofis adalah fokus utama Anda.";
+                    break;
+                case 8:
+                    deskripsi = "Garis hidup 8 sangat lekat dengan pencapaian materi, kepemimpinan, dan kesuksesan. Anda memiliki ambisi besar, visi yang kuat, dan kemampuan manajerial yang hebat untuk mengeksekusi rencana. Anda ahli dalam melihat peluang dan memimpin sebuah tim menuju keberhasilan.";
+                    break;
+                case 9:
+                    deskripsi = "Garis hidup 9 mencerminkan jiwa kemanusiaan yang mendalam. Anda memiliki kepedulian universal, bijaksana, dan cenderung suka membantu sesama tanpa pamrih. Anda memiliki pandangan luas tentang kehidupan dan sering berjuang untuk keadilan serta membawa dampak positif bagi dunia.";
+                    break;
+                default:
+                    deskripsi = "Garis hidup tidak terdefinisi.";
+            }
+            
+            document.getElementById('teks-hasil').innerText = deskripsi;
+            document.getElementById('hasil-deskripsi-container').style.display = "block";
+        }
+
+        function resetForm() {
+            document.getElementById('tanggal').selectedIndex = 0;
+            document.getElementById('bulan').selectedIndex = 0;
+            document.getElementById('tahun').selectedIndex = 0;
+
+            document.getElementById('out-tanggal').value = '';
+            document.getElementById('out-bulan').value = '';
+            document.getElementById('out-tahun').value = '';
+            document.getElementById('out-hasil1').value = '';
+            document.getElementById('out-hasil2').value = '';
+            document.getElementById('out-hasilAkhir').value = '';
+            
+            document.getElementById('hasil-deskripsi-container').style.display = "none";
+        }
+    </script>
+</body>
+</html>

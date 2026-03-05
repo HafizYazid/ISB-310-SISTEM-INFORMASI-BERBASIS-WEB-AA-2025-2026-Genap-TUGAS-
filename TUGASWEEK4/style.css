@@ -1,0 +1,134 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Background motif dari gambar yang kamu berikan */
+    background-image: url('asset/logoitenas.jpeg');
+    background-size: 150px; 
+    background-repeat: repeat;
+}
+
+.main-wrapper {
+    width: 900px;
+    margin: 30px auto;
+    background-color: #e8a02b; /* Warna kuning mustard/orange sesuai gambar */
+    border: 5px solid #632323; /* Border tebal merah bata/coklat tua */
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.header-images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    /* Tidak ada celah antar gambar */
+    gap: 0; 
+}
+
+.header-images img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+}
+
+.content-wrapper {
+    display: flex;
+    min-height: 500px;
+}
+
+.sidebar {
+    width: 20%;
+    padding-top: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    text-align: center;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #4a2894; /* Warna teks ungu */
+    font-weight: bold;
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px solid #b57a1e; /* Garis pemisah bawah */
+}
+
+/* Garis atas untuk item pertama */
+.sidebar li:first-child a {
+    border-top: 1px solid #b57a1e;
+}
+
+.main-content {
+    width: 80%;
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
+h2, h3 {
+    margin-top: 0;
+}
+
+p {
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #734e15;
+    margin: 15px 0;
+}
+
+.form-table, .output-table {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.form-table td, .output-table td {
+    padding: 5px 0;
+    font-size: 0.9em;
+    vertical-align: middle;
+}
+
+.form-table select {
+    padding: 3px;
+    width: 150px;
+}
+
+.buttons button {
+    padding: 2px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+/* Kotak putih untuk output seperti di gambar */
+.output-table input[type="text"] {
+    padding: 3px;
+    width: 150px;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+.footer {
+    text-align: center;
+    font-size: 0.8em;
+    padding: 10px;
+    border-top: 1px solid #b57a1e;
+    background-color: #f0a830; /* Sedikit lebih terang di bagian bawah jika diperlukan */
+}
+
+#hasil-deskripsi-container {
+    margin-top: 20px;
+    font-size: 0.9em;
+    line-height: 1.5;
+    text-align: justify;
+    display: none;
+}
